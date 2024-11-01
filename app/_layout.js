@@ -1,12 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { Slot } from 'expo-router'
+import React, { useEffect } from 'react'
+import { Slot, useSegments } from 'expo-router'
 import "../global.css";
+import { AuthContextProvider, useAuth } from "../context/authContext";
 
-export default function _layout() {
+const MainLayout = () => {
+    const {isAuthenticated} = useAuth();
+    const segments = useSegments();
+
+    useEffect (() => {
+        if (typeof isAuthenticated == "undefined") return;
+        const inApp = segments[0] === "app";
+    },[isAuthenticated])
+
+    return <Slot />
+
+}
+
+export default function Rootlayout() {
     return (
-        <View>
-            <Slot />
-        </View>
+        <AuthContextProvider>
+            <MainLayout />
+        </AuthContextProvider>
     )
 } 
