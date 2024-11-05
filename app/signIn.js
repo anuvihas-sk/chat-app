@@ -3,6 +3,7 @@ import React from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar } from 'react-native-web';
 import { Image } from 'react-native';
+import { Octicons } from '@expo/vector-icons';
 
 
 const signIn = () => {
@@ -15,7 +16,10 @@ const signIn = () => {
         </View>
 
         <View className="gap-10">
-          <Text style={{fontSize: wp(5)}} className="font-bold text-center">Sign In</Text>
+          <Text style={{fontSize: hp(5)}} className="font-bold text-center">Sign In</Text>
+          <View style={{height: hp(6)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
+            <Octicons name="mail" size={hp(2.7)} color="black" />
+          </View>
         </View>
     </View>
   )
