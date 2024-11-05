@@ -9,7 +9,7 @@ import { TouchableOpacity } from 'react-native';
 
 const signIn = () => {
   return (
-    <View className="flex-2">
+    <View className="flex-2 pt-10">
       <StatusBar style="dark"/>
       <View style={{paddingTop: hp(8), paddingHorizontal: wp(8)}} className="flex-1 gap-12"/>
         <View className="items-center">
@@ -49,4 +49,3 @@ const signIn = () => {
 }
 
 export default signIn
-
