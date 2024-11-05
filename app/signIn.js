@@ -1,4 +1,4 @@
-import {  StyleSheet, Text, TextInput, View } from 'react-native';
+import {  Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar} from 'expo-status-bar';
@@ -6,8 +6,10 @@ import { Image } from 'react-native';
 import { Octicons } from '@expo/vector-icons';
 import { Touchable } from 'react-native';
 import { TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const signIn = () => {
+  const router = useRouter();
   return (
     <View className="flex-2 pt-10">
       <StatusBar style="dark"/>
@@ -39,7 +41,9 @@ const signIn = () => {
           
             <View className="flex-row gap-2 justify-center">
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-center text-black">Don't have an account?</Text>
-              <Text style={{fontSize: hp(1.7)}} className="font-bold text-center text-black">Sign Up</Text>
+              <Pressable onPress={() => router.push('/signUp')}>
+                <Text style={{fontSize: hp(1.7)}} className="font-bold text-center text-red-600">Sign Up</Text>
+              </Pressable>
             </View>
 
           </View>
