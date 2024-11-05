@@ -22,13 +22,13 @@ const signIn = () => {
           <View className="gap-4">
             <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
               <Octicons name="mail" size={hp(2.7)} className="px-4 py-5" color="black" />
-              <TextInput style={{fontSize: hp(2.5)}} className="flex-1 font-semibold " placeholder="Email address" />
+              <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Email address" />
             </View>
 
             <View className="gap-2">
               <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
-                <Octicons name="lock" size={hp(2.7)} className="px-4 py-4" color="black" />
-                <TextInput style={{fontSize: hp(2.5)}} className="flex-1 font-semibold " placeholder="Password" />
+                <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
+                <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Password" />
               </View>
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-right text-black">Forgot password?</Text>
             </View>
