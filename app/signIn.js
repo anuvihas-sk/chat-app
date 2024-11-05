@@ -17,8 +17,14 @@ const signIn = () => {
 
         <View className="gap-10">
           <Text style={{fontSize: hp(5)}} className="font-bold text-center">Sign In</Text>
-          <View style={{height: hp(6)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
-            <Octicons name="mail" size={hp(2.7)} color="black" />
+          <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
+            <Octicons name="mail" size={hp(2.7)} className="px-4 py-4" color="black" />
+          </View>
+          <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
+            <Octicons name="mail" size={hp(2.7)} className="px-4 py-4" color="black" />
+          </View>
+          <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
+            <Octicons name="mail" size={hp(2.7)}  className="px-4 py-4" color="black" />
           </View>
         </View>
     </View>
