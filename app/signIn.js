@@ -7,9 +7,9 @@ import { Image } from 'react-native';
 
 const signIn = () => {
   return (
-    <View className="flex-1">
+    <View className="flex-2">
       <StatusBar style="dark"/>
-      <View style={{paddingTop: hp(9), paddingHorizontal: wp(2)}} className="flex-1 gap-12"/>
+      <View style={{paddingTop: hp(8), paddingHorizontal: wp(8)}} className="flex-1 gap-12"/>
         <View className="items-center">
           <Image style={{height: hp(30)}} resizeMode="contain" source={require('../assets/images/logo.png')} />
         </View>
