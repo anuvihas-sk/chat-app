@@ -9,9 +9,9 @@ const signIn = () => {
   return (
     <View className="flex-1">
       <StatusBar style="dark"/>
-      <View style={{paddingTop: hp(8), paddingHorizontal: wp(5)}} className="flex-1 gap-12"/>
+      <View style={{paddingTop: hp(2), paddingHorizontal: wp(2)}} className="flex-1 gap-12"/>
         <View className="items-center">
-          <Image style={{height: wp(30), width: wp(30)}} resizeMode="contain" source={require('../assets/images/logo.png')} />
+          <Image style={{height: wp(30)}} resizeMode="contain" source={require('../assets/images/logo.png')} />
         </View>
 
         <View className="gap-10">
