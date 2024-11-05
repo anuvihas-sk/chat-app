@@ -46,7 +46,7 @@ const signIn = () => {
           
             <View className="flex-row gap-2 justify-center">
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-center text-black">Already have an account?</Text>
-              <Pressable onPress={() => router.push('/signUp')}>
+              <Pressable onPress={() => router.push('/signIn')}>
                 <Text style={{fontSize: hp(1.7)}} className="font-bold text-center text-red-600">Sign In</Text>
               </Pressable>
             </View>
