@@ -10,6 +10,14 @@ import { useRouter } from 'expo-router';
 
 const signIn = () => {
   const router = useRouter();
+
+  const mailRef = useRef("");
+  const passwordRef = useRef("");
+
+  const handleLogin = async() => {
+    
+  }
+
   return (
     <View className="flex-2 pt-10">
       <StatusBar style="dark"/>
@@ -24,18 +32,18 @@ const signIn = () => {
           <View className="gap-4">
             <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
               <Octicons name="mail" size={hp(2.7)} className="px-4 py-5" color="black" />
-              <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Email address" />
+              <TextInput  onChange={value => mailRef.current = value} style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Email address" />
             </View>
 
             <View className="gap-2">
               <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
                 <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
-                <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Password" />
+                <TextInput  onChange={value => passwordRef.current = value} style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Password" />
               </View>
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-right text-black">Forgot password?</Text>
             </View>
 
-            <TouchableOpacity >
+            <TouchableOpacity onPress={() => handleLogin()} >
               <Text style={{fontSize: hp(2.5)}} className="font-bold text-center text-white bg-black rounded-xl py-4">Sign In</Text>
             </TouchableOpacity>
           
