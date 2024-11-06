@@ -7,9 +7,20 @@ import { Octicons } from '@expo/vector-icons';
 import { Touchable } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useRef } from 'react';
+import { Alert } from 'react-native';
 
-const signIn = () => {
+const signUp = () => {
   const router = useRouter();
+  const mailRef = useRef("");
+  const passwordRef = useRef("");
+
+  const handleRegister = async() => {
+    if(!mailRef.current || !passwordRef.current ||!confirmpasswordRef.current){
+        Alert.alert("Sign Up", "Please fill all the fields!");
+        return;
+  }
+  }
   return (
     <View className="flex-2 pt-10">
       <StatusBar style="dark"/>
@@ -24,23 +35,35 @@ const signIn = () => {
           <View className="gap-4">
             <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
               <Octicons name="mail" size={hp(2.7)} className="px-4 py-5" color="black" />
-              <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Email address" />
+              <TextInput 
+              onChange={value => mailRef.current = value} 
+              style={{fontSize: hp(2.5)}} 
+              className="flex-1" 
+              placeholder="Email address" />
             </View>
 
             <View className="gap-2">
               <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
                 <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
-                <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Password" />
+                <TextInput 
+                onChange={value => passwordRef.current = value} 
+                style={{fontSize: hp(2.5)}} 
+                className="flex-1" 
+                placeholder="Password" />
               </View>
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-right text-black">Forgot password?</Text>
             </View>
 
             <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
               <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
-              <TextInput style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Confirm password" />
+              <TextInput  
+              onChange={value => confirmpasswordRef.current = value}
+              style={{fontSize: hp(2.5)}} 
+              className="flex-1" 
+              placeholder="Confirm password" />
             </View>
 
-            <TouchableOpacity >
+            <TouchableOpacity onPress={handleRegister} >
               <Text style={{fontSize: hp(2.5)}} className="font-bold text-center text-white bg-black rounded-xl py-4">Sign Up</Text>
             </TouchableOpacity>
           
@@ -57,4 +80,4 @@ const signIn = () => {
   )
 }
 
-export default signIn
+export default signUp

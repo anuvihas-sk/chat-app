@@ -1,4 +1,4 @@
-import {  Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import {  Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar} from 'expo-status-bar';
@@ -7,23 +7,32 @@ import { Octicons } from '@expo/vector-icons';
 import { Touchable } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { isAwaitKeyword } from 'typescript';
+import { useRef } from 'react';
 
 const signIn = () => {
   const router = useRouter();
-
   const mailRef = useRef("");
   const passwordRef = useRef("");
 
   const handleLogin = async() => {
-    
+    if(!mailRef.current || !passwordRef.current){
+        Alert.alert("Sign In", "Please fill all the fields!");
+        return;
+  }
   }
 
   return (
     <View className="flex-2 pt-10">
       <StatusBar style="dark"/>
       <View style={{paddingTop: hp(8), paddingHorizontal: wp(8)}} className="flex-1 gap-12"/>
+
         <View className="items-center">
-          <Image style={{height: hp(30)}} resizeMode="contain" source={require('../assets/images/logo.png')} />
+          <Image 
+          style={{height: hp(30)}} 
+          resizeMode="contain" 
+          source={require('../assets/images/logo.png')} />
+
         </View>
 
         <View className="gap-5 p-6">
@@ -31,27 +40,58 @@ const signIn = () => {
 
           <View className="gap-4">
             <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
-              <Octicons name="mail" size={hp(2.7)} className="px-4 py-5" color="black" />
-              <TextInput  onChange={value => mailRef.current = value} style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Email address" />
+
+              <Octicons 
+              name="mail" 
+              size={hp(2.7)} 
+              className="px-4 py-5" 
+              color="black" />
+
+              <TextInput  
+              onChange={value => mailRef.current = value} 
+              style={{fontSize: hp(2.5)}} 
+              className="flex-1" 
+              placeholder="Email address" />
+
             </View>
 
             <View className="gap-2">
               <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
-                <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
-                <TextInput  onChange={value => passwordRef.current = value} style={{fontSize: hp(2.5)}} className="flex-1" placeholder="Password" />
+
+                <Octicons 
+                name="lock" 
+                size={hp(2.7)} 
+                className="px-4 py-5" 
+                color="black" />
+
+                <TextInput
+                  secureTextEntry
+                  onChange={value => passwordRef.current = value} 
+                  style={{fontSize: hp(2.5)}} 
+                  className="flex-1" 
+                  placeholder="Password" />
+
               </View>
-              <Text style={{fontSize: hp(1.7)}} className="font-semibold text-right text-black">Forgot password?</Text>
+
+              <Text 
+              style={{fontSize: hp(1.7)}} 
+              className="font-semibold text-right text-black">Forgot password?</Text>
+
             </View>
 
-            <TouchableOpacity onPress={() => handleLogin()} >
-              <Text style={{fontSize: hp(2.5)}} className="font-bold text-center text-white bg-black rounded-xl py-4">Sign In</Text>
+            <TouchableOpacity onPress={handleLogin} >
+              <Text 
+              style={{fontSize: hp(2.5)}} 
+              className="font-bold text-center text-white bg-black rounded-xl py-4">Sign In</Text>
             </TouchableOpacity>
           
             <View className="flex-row gap-2 justify-center">
+
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-center text-black">Don't have an account?</Text>
               <Pressable onPress={() => router.push('/signUp')}>
                 <Text style={{fontSize: hp(1.7)}} className="font-bold text-center text-red-600">Sign Up</Text>
               </Pressable>
+
             </View>
 
           </View>
