@@ -9,20 +9,27 @@ import { TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useRef } from 'react';
 import { Alert } from 'react-native';
+import CustomKeyboard from '../components/CustomKeyboard';
 
 const signUp = () => {
   const router = useRouter();
   const mailRef = useRef("");
   const passwordRef = useRef("");
+  const confirmpasswordRef = useRef("");
 
   const handleRegister = async() => {
-    if(!mailRef.current || !passwordRef.current ||!confirmpasswordRef.current){
+    if(!mailRef.current || !passwordRef.current || !confirmpasswordRef.current){
         Alert.alert("Sign Up", "Please fill all the fields!");
         return;
   }
+    if(passwordRef.current !== confirmpasswordRef.current){
+      Alert.alert("Sign Up", "Passwords do not match!");
+      return;
   }
+  }
+
   return (
-    <View className="flex-2 pt-10">
+    <CustomKeyboard>
       <StatusBar style="dark"/>
       <View style={{paddingTop: hp(8), paddingHorizontal: wp(8)}} className="flex-1 gap-12"/>
         <View className="items-center">
@@ -34,7 +41,13 @@ const signUp = () => {
 
           <View className="gap-4">
             <View style={{height: hp(7)}} className="flex-row gap-4 px-4 bg-gray-100 rounded-xl">
-              <Octicons name="mail" size={hp(2.7)} className="px-4 py-5" color="black" />
+
+              <Octicons 
+              name="mail" 
+              size={hp(2.7)} 
+              className="px-4 py-5" 
+              color="black" />
+
               <TextInput 
               onChange={value => mailRef.current = value} 
               style={{fontSize: hp(2.5)}} 
@@ -44,23 +57,39 @@ const signUp = () => {
 
             <View className="gap-2">
               <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
-                <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
+
+                <Octicons 
+                name="lock" 
+                size={hp(2.7)} 
+                className="px-4 py-5" 
+                color="black" />
+
                 <TextInput 
+                secureTextEntry
                 onChange={value => passwordRef.current = value} 
                 style={{fontSize: hp(2.5)}} 
                 className="flex-1" 
                 placeholder="Password" />
+
               </View>
               <Text style={{fontSize: hp(1.7)}} className="font-semibold text-right text-black">Forgot password?</Text>
             </View>
 
             <View style={{height: hp(7)}} className="flex-row gap-4 px-5 bg-gray-100 rounded-xl">
-              <Octicons name="lock" size={hp(2.7)} className="px-4 py-5" color="black" />
+
+              <Octicons  
+              name="lock" 
+              size={hp(2.7)} 
+              className="px-4 py-5" 
+              color="black" />
+
               <TextInput  
+              secureTextEntry
               onChange={value => confirmpasswordRef.current = value}
               style={{fontSize: hp(2.5)}} 
               className="flex-1" 
               placeholder="Confirm password" />
+
             </View>
 
             <TouchableOpacity onPress={handleRegister} >
@@ -68,15 +97,24 @@ const signUp = () => {
             </TouchableOpacity>
           
             <View className="flex-row gap-2 justify-center">
-              <Text style={{fontSize: hp(1.7)}} className="font-semibold text-center text-black">Already have an account?</Text>
+
+              <Text 
+              style={{fontSize: hp(1.7)}} 
+              className="font-semibold text-center text-black">Already have an account?</Text>
+
               <Pressable onPress={() => router.push('/signIn')}>
-                <Text style={{fontSize: hp(1.7)}} className="font-bold text-center text-red-600">Sign In</Text>
+
+                <Text 
+                style={{fontSize: hp(1.7)}} 
+                className="font-bold text-center text-red-600">Sign In</Text>
+
               </Pressable>
+
             </View>
 
           </View>
         </View>
-    </View>
+    </CustomKeyboard>
   )
 }
 
