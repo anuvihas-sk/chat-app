@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children }) => {
     useEffect (() => {
         setTimeout(() => {
             setIsAuthenticated(false);
-        },1000)
+        },5000)
     },[])
 
     const login = async(email, password) => {

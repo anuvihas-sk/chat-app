@@ -1,16 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Spinner from 'react-native-loading-spinner-overlay';
+import { Image } from 'react-native'
 
 export default function Home() {
     return (
-        <View style={{ flex: 1 }}>
-        <Spinner
-          visible={true}
-          textContent={'Wait karo ji...'}
-          textStyle={{ color: 'white' }}
-          overlayColor="black"
-        />
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Image source={require('../assets/images/logo.png')} />
       </View>
     )
 }
