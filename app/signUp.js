@@ -22,10 +22,6 @@ const signUp = () => {
         Alert.alert("Sign Up", "Please fill all the fields!");
         return;
   }
-    if(passwordRef.current !== confirmpasswordRef.current){
-      Alert.alert("Sign Up", "Passwords do not match!");
-      return;
-  }
   }
 
   return (
