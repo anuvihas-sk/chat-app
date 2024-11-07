@@ -13,6 +13,23 @@ export const AuthContextProvider = ({ children }) => {
     const[isAuthenticated, setIsAuthenticated] = useState(undefined);
 
     useEffect (() => {
+    //     if (typeof isAuthenticated == "undefined") return;
+    //     const inApp = segments[0] === "app";
+    //     if(isAuthenticated && !inApp) {
+    //         router.replace("/home");
+    //     }else if (isAuthenticated==false) {
+    //         router.replace("/signIn");
+    //     }
+        
+
+    // setTimeout(() => {
+    //     setIsAuthenticated(true);
+    //     router.replace("/home");
+        
+    // })    
+
+
+
         const unsub = auth.onAuthStateChanged((user) => {
             if (user) {
                 setUser(user);

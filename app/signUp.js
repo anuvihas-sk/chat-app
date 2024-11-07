@@ -10,11 +10,12 @@ import { useRouter } from 'expo-router';
 import { useRef } from 'react';
 import { Alert } from 'react-native';
 import CustomKeyboard from '../components/CustomKeyboard';
+import { useAuth } from '../context/authContext';
 
 const signUp = () => {
   const router = useRouter();
   const mailRef = useRef("");
-  const {resgister} = useAuth();
+  const {register} = useAuth();
   const passwordRef = useRef("");
   const confirmpasswordRef = useRef("");
 
