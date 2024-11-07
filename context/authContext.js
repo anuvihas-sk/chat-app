@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { auth } from "../fireBase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 
@@ -42,9 +43,11 @@ export const AuthContextProvider = ({ children }) => {
     const register = async(email, password, username, profileUrl) => {
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('response.user', response?.user);
+            console.log('response.user:', response?.user);
 
-        } catch (e) {
+            await setDoc(doc(db, "users", response?.user?.uid), {
+
+        }) catch (e) {
             
         }  
     }
