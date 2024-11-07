@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { createContext } from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import { auth } from "../fireBase";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -10,9 +12,17 @@ export const AuthContextProvider = ({ children }) => {
     const[isAuthenticated, setIsAuthenticated] = useState(undefined);
 
     useEffect (() => {
-        setTimeout(() => {
-            setIsAuthenticated(false);
-        },2000)
+        const unsub = auth.onAuthStateChanged((user) => {
+            if (user) {
+                setUser(user);
+                setIsAuthenticated(true);
+            } else {
+                setUser(null);
+                setIsAuthenticated(false);
+            }
+        })
+
+        return unsub;
     },[])
 
     const login = async(email, password) => {
@@ -31,6 +41,8 @@ export const AuthContextProvider = ({ children }) => {
     }
     const register = async(email, password, username, profileUrl) => {
         try {
+            const response = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('response.user', response?.user);
 
         } catch (e) {
             
