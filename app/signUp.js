@@ -14,6 +14,7 @@ import CustomKeyboard from '../components/CustomKeyboard';
 const signUp = () => {
   const router = useRouter();
   const mailRef = useRef("");
+  const {resgister} = useAuth();
   const passwordRef = useRef("");
   const confirmpasswordRef = useRef("");
 
@@ -22,6 +23,11 @@ const signUp = () => {
         Alert.alert("Sign Up", "Please fill all the fields!");
         return;
   }
+   let response = await register (mailRef.current, passwordRef.current, confirmpasswordRef.current);
+   if(response?.success){
+    router.push("/signIn");
+   }
+
   }
 
   return (

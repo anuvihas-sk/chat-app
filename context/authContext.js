@@ -55,6 +55,8 @@ export const AuthContextProvider = ({ children }) => {
 
 
         } catch (e) {
+            let msg = e.message;
+            if(msg.includes("(auth/invalid-email)")) msg = "Invalid email";
             return {success: false, error: e.message};
         }  
     }
