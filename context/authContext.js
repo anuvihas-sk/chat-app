@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { auth } from "../fireBase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "../fireBase";
 
 export const AuthContext = createContext();
 
@@ -68,13 +69,13 @@ export const AuthContextProvider = ({ children }) => {
                 userId: response?.user?.uid
             })
 
-            return {success: true, user: response?.user};
+            return {success: true, data: response?.user};
 
 
         } catch (e) {
             let msg = e.message;
             if(msg.includes("(auth/invalid-email)")) msg = "Invalid email";
-            return {success: false, error: e.message};
+            return {success: false, msg: e.message};
         }  
     }
 
