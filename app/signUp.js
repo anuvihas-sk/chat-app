@@ -11,6 +11,7 @@ import { useRef } from 'react';
 import { Alert } from 'react-native';
 import CustomKeyboard from '../components/CustomKeyboard';
 import { useAuth } from '../context/authContext';
+import { db } from '../fireBase';
 
 const signUp = () => {
   const router = useRouter();
