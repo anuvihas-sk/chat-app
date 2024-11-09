@@ -11,7 +11,7 @@ import { useRef } from 'react';
 import { Alert } from 'react-native';
 import CustomKeyboard from '../components/CustomKeyboard';
 import { useAuth } from '../context/authContext';
-import { db } from '../fireBase';
+import { db } from '../fireBaseConfig';
 
 const signUp = () => {
   const router = useRouter();
@@ -32,6 +32,7 @@ const signUp = () => {
         Alert.alert("Sign Up", "Passwords do not match!");
         return;
     }
+
 
     console.log("Attempting to register with email:", mailRef.current);
 
