@@ -20,17 +20,34 @@ const signUp = () => {
   const passwordRef = useRef("");
   const confirmpasswordRef = useRef("");
 
-  const handleRegister = async() => {
-    if(!mailRef.current || !passwordRef.current || !confirmpasswordRef.current){
+  const handleRegister = async () => {
+    // Check if required fields are filled
+    if (!mailRef.current || !passwordRef.current || !confirmpasswordRef.current) {
         Alert.alert("Sign Up", "Please fill all the fields!");
         return;
-  }
-   let response = await register (mailRef.current, passwordRef.current, confirmpasswordRef.current);
-   if(response?.success){
-    router.push("/signIn");
-   }
+    }
 
-  }
+    // Ensure password confirmation
+    if (passwordRef.current !== confirmpasswordRef.current) {
+        Alert.alert("Sign Up", "Passwords do not match!");
+        return;
+    }
+
+    console.log("Attempting to register with email:", mailRef.current);
+
+    // Call register and log the response
+    let response = await register(mailRef.current, passwordRef.current, confirmpasswordRef.current);
+    console.log("Register response:", response);
+
+    // Check if registration was successful
+    if (response?.success) {
+        console.log("Registration successful, navigating to sign-in.");
+        router.push("/signIn");
+    } else {
+        console.log("Registration failed with message:", response?.msg);
+        Alert.alert("Sign Up Error", response?.msg || "Registration failed");
+    }
+};
 
   return (
     <CustomKeyboard>
