@@ -30,15 +30,13 @@ export const AuthContextProvider = ({ children }) => {
         
     // })    
 
-
-
         const unsub = auth.onAuthStateChanged((user) => {
             if (user) {
-                setUser(user);
                 setIsAuthenticated(true);
+                setUser(user);
             } else {
-                setUser(null);
                 setIsAuthenticated(false);
+                setUser(null);
             }
         })
 
